@@ -27,23 +27,23 @@ public class Person implements Serializable {
 	private int id;
 	
 	/** The name. */
-	@Column(name="id")
+	@Column(name="name")
 	private String name;
 	
 	/** The address. */
-	@Column(name="id")
+	@Column(name="address")
 	private String address;
 	
 	/** The nic. */
-	@Column(name="id")
+	@Column(name="nic", nullable = false)
 	private String nic;
 	
 	/** The tel no. */
-	@Column(name="id")
+	@Column(name="telNo")
 	private String telNo;
 	
 	/** The email. */
-	@Column(name="id")
+	@Column(name="email")
 	private String email;
 
 	/**

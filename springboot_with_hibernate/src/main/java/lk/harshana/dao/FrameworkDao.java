@@ -1,13 +1,14 @@
 package lk.harshana.dao;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class FrameworkDao<PK extends Serializable, T> {
+public abstract class FrameworkDao<T> {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,12 +29,13 @@ public abstract class FrameworkDao<PK extends Serializable, T> {
 		getSession().update(entity);
 	}
 	
-	public List<T> listAllEntity(String entity) {
-		
-		
-		/*getSession().createQuery("from " + entity).list();*/
-		return null;
+	public List<T> listAllEntity() throws HibernateException {
+		List<T> list = new ArrayList<T>();
+//		list = getSession().createQuery("from " +  ).list();
+		return list;
 	}
 	
-	public abstract void delete(String id);
+	public void delete(String id) {
+		
+	}
 }
