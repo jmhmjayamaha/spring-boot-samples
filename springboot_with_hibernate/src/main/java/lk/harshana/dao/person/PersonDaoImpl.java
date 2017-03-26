@@ -27,13 +27,13 @@ public class PersonDaoImpl extends FrameworkDao<Person> implements PersonDao  {
 	}
 
 	public List<Person> getAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return listAllEntity();
 	}
 
-	public Person getPerson() {
+	public Person getPerson(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return findById(id);
 	}
 
 }

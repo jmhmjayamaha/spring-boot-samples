@@ -10,6 +10,6 @@ public interface PersonDao {
 	void updatePerson(Person person);
 	void deletePerson(Person Person);
 	List<Person> getAllPersons();
-	Person getPerson();
+	Person getPerson(int id);
 	
 }

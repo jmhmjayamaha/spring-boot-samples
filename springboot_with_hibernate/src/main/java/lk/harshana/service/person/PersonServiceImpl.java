@@ -29,13 +29,17 @@ public class PersonServiceImpl implements PersonService  {
 	}
 
 	public List<Person> getAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return personDao.getAllPersons();
 	}
 
-	public Person getPerson() {
-		// TODO Auto-generated method stub
-		return null;
+	public Person getPerson(int id) {
+		Person person = personDao.getPerson(id);
+		
+		if(person == null ) {
+			return null;
+		}
+		return person;
 	}
 
 }
