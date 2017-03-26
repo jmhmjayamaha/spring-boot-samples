@@ -36,4 +36,10 @@ public class PersonDaoImpl extends FrameworkDao<Person> implements PersonDao  {
 		return findById(id);
 	}
 
+	@Override
+	public boolean deletePersonById(int id) {
+		
+		return delete(id);
+	}
+
 }

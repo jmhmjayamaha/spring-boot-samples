@@ -42,4 +42,10 @@ public class PersonServiceImpl implements PersonService  {
 		return person;
 	}
 
+	@Override
+	public boolean deletePersonById(int id) {
+		
+		return personDao.deletePersonById(id);
+	}
+
 }

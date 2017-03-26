@@ -70,4 +70,21 @@ public class PersonController {
 		}
 		return new ResponseEntity<Person>(person, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="/deletePerson/{id}", method= RequestMethod.DELETE)
+	public ResponseEntity<?> deletePerson(@PathVariable("id") int id) {
+		boolean delete = personService.deletePersonById(id);
+		JSONObject jsonObject = null;
+		
+		if(delete == false) {
+			jsonObject = new JSONObject();
+			jsonObject.put("Status", "false");
+			return new ResponseEntity<Object>(jsonObject, HttpStatus.BAD_REQUEST);
+		}
+		else {
+			jsonObject = new JSONObject();
+			jsonObject.put("Status", "true");
+			return new ResponseEntity<Object>(jsonObject, HttpStatus.OK);
+		}
+	}
 }

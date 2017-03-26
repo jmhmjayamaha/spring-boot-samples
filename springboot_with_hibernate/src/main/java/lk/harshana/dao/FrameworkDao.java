@@ -39,8 +39,15 @@ public abstract class FrameworkDao<T> {
 		return list;
 	}
 	
-	public void delete(String id) {
-		
+	public boolean delete(int id) {
+		T entity = findById(id);
+		if(entity == null) {
+			return false;
+		}
+		else {
+			getSession().delete(entity);
+			return true;
+		}
 	}
 	
 	public T findById(int id) throws HibernateException {
