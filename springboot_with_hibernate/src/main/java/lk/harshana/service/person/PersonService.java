@@ -7,7 +7,7 @@ import lk.harshana.model.Person;
 public interface PersonService {
 
 	void savePerson(Person person);
-	void updatePerson(Person person);
+	boolean updatePerson(int id, Person person);
 	void deletePerson(Person Person);
 	boolean deletePersonById(int id);
 	List<Person> getAllPersons();

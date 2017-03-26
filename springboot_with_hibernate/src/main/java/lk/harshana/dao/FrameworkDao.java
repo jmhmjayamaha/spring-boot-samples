@@ -29,8 +29,15 @@ public abstract class FrameworkDao<T> {
 		getSession().delete(entity);
 	}
 	
-	public void update(T entity) {
-		getSession().update(entity);
+	public boolean update(int id, T entity) {
+		T obj = findById(id);
+		if(obj == null) {
+			return false;
+		}
+		else {
+			getSession().merge(entity);
+			return true;
+		}
 	}
 	
 	public List<T> listAllEntity() throws HibernateException {
@@ -45,7 +52,7 @@ public abstract class FrameworkDao<T> {
 			return false;
 		}
 		else {
-			getSession().delete(entity);
+			delete(entity);
 			return true;
 		}
 	}

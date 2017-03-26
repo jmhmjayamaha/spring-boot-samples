@@ -16,9 +16,8 @@ public class PersonDaoImpl extends FrameworkDao<Person> implements PersonDao  {
 		persist(person);
 	}
 
-	public void updatePerson(Person person) {
-		// TODO Auto-generated method stub
-		
+	public boolean updatePerson(int id, Person person) {
+		return update(id,person);
 	}
 
 	public void deletePerson(Person Person) {

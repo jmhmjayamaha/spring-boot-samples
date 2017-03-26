@@ -18,9 +18,8 @@ public class PersonServiceImpl implements PersonService  {
 		personDao.savePerson(person);
 	}
 
-	public void updatePerson(Person person) {
-		// TODO Auto-generated method stub
-		
+	public boolean updatePerson(int id, Person person) {
+		return personDao.updatePerson(id, person);
 	}
 
 	public void deletePerson(Person Person) {
