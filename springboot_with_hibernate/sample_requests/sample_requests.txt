@@ -1,0 +1,49 @@
+# to save a person
+
+http://localhost:8080/api/savePerson  - POST 
+
+{
+	"name" : "harshana",
+	"address" : "warakapola",
+	"nic" : "12346798V",
+	"telNo" : "0771234567",
+	"email" : "example@gmail.com"
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+
+# to get all person 
+
+http://localhost:8080/api/allPerson - GET
+
+/////////////////////////////////////////////////////////////////////////
+
+# get person by id
+
+http://localhost:8080/api/getPerson/{id} - GET
+
+example : http://localhost:8080/api/getPerson/1
+
+
+/////////////////////////////////////////////////////////////////////////
+
+# to delete a person by id 
+
+http://localhost:8080/api/deletePerson/{id} - DELETE
+
+Example : http://localhost:8080/api/deletePerson/8
+
+/////////////////////////////////////////////////////////////////////////
+
+# update a person 
+
+http://localhost:8080/api/updatePerson/11 - PUT
+
+{
+  "name": "madusanka",
+  "address": "colombo",
+  "nic": "8912345567V",
+  "telNo": "0773214657",
+  "email": "example1@gmail.com"
+}
