@@ -1,5 +1,7 @@
 package lk.harshana.controller;
 
+import java.util.List;
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jackson.JsonComponentModule;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mongodb.util.JSON;
 
 import lk.harshana.dto.PersonRequest;
 import lk.harshana.model.Person;
@@ -33,5 +37,17 @@ public class PersonController {
 			object.put("error", e.getMessage());
 			return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@RequestMapping(value="/getAllPerson", method=RequestMethod.GET)
+	public ResponseEntity<List<Person>> getAllPerson() {
+		List<Person> list = personService.getAllPerson();
+		JSONObject object = null;
+		if(list.isEmpty()) {
+			object = new JSONObject();
+			object.put("status", "There is no conetent");
+			return new ResponseEntity<List<Person>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Person>>(list, HttpStatus.OK);
 	}
 }
