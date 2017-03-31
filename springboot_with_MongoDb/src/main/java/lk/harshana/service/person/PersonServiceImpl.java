@@ -21,8 +21,8 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public Person getPersonById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return personDao.findById(id);
 	}
 
 	@Override
@@ -42,6 +42,11 @@ public class PersonServiceImpl implements PersonService {
 	public boolean deletePerson(String id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Person> getPersonByName(String name) {
+		return personDao.findByName(name);
 	}
 	
 	

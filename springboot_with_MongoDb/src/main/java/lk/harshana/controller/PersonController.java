@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jackson.JsonComponentModule;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,10 +45,26 @@ public class PersonController {
 		List<Person> list = personService.getAllPerson();
 		JSONObject object = null;
 		if(list.isEmpty()) {
-			object = new JSONObject();
-			object.put("status", "There is no conetent");
 			return new ResponseEntity<List<Person>>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<List<Person>>(list, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getPersonByName/{name}", method=RequestMethod.GET)
+	public ResponseEntity<List<Person>> getPersonByName(@PathVariable("name") String name) {
+		List<Person> list = personService.getPersonByName(name);
+		if(list.isEmpty()) {
+			return new ResponseEntity<List<Person>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Person>>(list, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getPersonById/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Person> getPersonById(@PathVariable("id") String id) {
+		Person person = personService.getPersonById(id);
+		if(person == null) {
+			return new ResponseEntity<Person>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<Person>(person, HttpStatus.OK);
 	}
 }
