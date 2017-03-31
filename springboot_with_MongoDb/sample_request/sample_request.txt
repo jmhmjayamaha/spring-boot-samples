@@ -1,0 +1,44 @@
+save person request
+
+http://localhost:8080/api/savePerson - POST
+
+{
+	"name" : "my name",
+	"address" : "my address",
+	"age" : 28,
+	"email" : "example@gmail.com",
+	"telNo" : "0111234657"
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+retrive all person
+
+http://localhost:8080/api/getAllPerson    - GET
+
+////////////////////////////////////////////////////////////////////////////////////////////
+retrive person by name
+
+http://localhost:8080/api/getPersonByName/{name}  - GET
+
+////////////////////////////////////////////////////////////////////////////////////////////
+retrive person by id
+
+http://localhost:8080/api/getPersonById/{id} - GET 
+
+////////////////////////////////////////////////////////////////////////////////////////////
+delete person by id
+
+http://localhost:8080/api/deletePerson/{id} - DELETE
+
+////////////////////////////////////////////////////////////////////////////////////////////
+update person
+ 
+http://localhost:8080/api/updatePerson/{id}  - PUT
+
+{
+  "name": "Harshana",
+  "address": "Ambepussa",
+  "age": 27,
+  "email": "harshana@gmail.com",
+  "telNo": "0111234567"
+}
