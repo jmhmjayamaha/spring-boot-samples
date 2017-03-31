@@ -40,8 +40,14 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public boolean deletePerson(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		Person p = getPersonById(id);
+		if(p == null) {
+			return false;
+		}
+		else {
+			personDao.delete(id);
+			return true;
+		}
 	}
 
 	@Override

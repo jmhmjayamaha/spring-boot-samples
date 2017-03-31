@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.jackson.JsonComponentModule;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.mongodb.util.JSON;
 
 import lk.harshana.dto.PersonRequest;
 import lk.harshana.model.Person;
@@ -66,5 +63,21 @@ public class PersonController {
 			return new ResponseEntity<Person>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<Person>(person, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/deletePerson/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<?> deletePersonById(@PathVariable("id") String id) {
+		boolean delete = personService.deletePerson(id);
+		JSONObject object = null;
+		if(delete) {
+			object = new JSONObject();
+			object.put("Status", "true");
+			return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
+		} else {
+			object = new JSONObject();
+			object.put("Status", "false");
+			object.put("Error", "No content to delete");
+			return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
+		}
 	}
 }
