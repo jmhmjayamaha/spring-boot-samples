@@ -26,6 +26,7 @@ public class PersonController {
 	@RequestMapping(value="/savePerson", method=RequestMethod.POST)
 	public ResponseEntity<?> savePerson(@RequestBody PersonRequest personRequset) {
 		JSONObject object = null;
+		
 		try {
 			Person person = new Person(personRequset.getName(), personRequset.getAddress(), personRequset.getAge(), personRequset.getEmail(), personRequset.getTelNo());
 			personService.savePerson(person);
@@ -41,6 +42,7 @@ public class PersonController {
 	public ResponseEntity<List<Person>> getAllPerson() {
 		List<Person> list = personService.getAllPerson();
 		JSONObject object = null;
+		
 		if(list.isEmpty()) {
 			return new ResponseEntity<List<Person>>(HttpStatus.NO_CONTENT);
 		}
@@ -50,6 +52,7 @@ public class PersonController {
 	@RequestMapping(value="/getPersonByName/{name}", method=RequestMethod.GET)
 	public ResponseEntity<List<Person>> getPersonByName(@PathVariable("name") String name) {
 		List<Person> list = personService.getPersonByName(name);
+		
 		if(list.isEmpty()) {
 			return new ResponseEntity<List<Person>>(HttpStatus.NO_CONTENT);
 		}
@@ -59,6 +62,7 @@ public class PersonController {
 	@RequestMapping(value="/getPersonById/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Person> getPersonById(@PathVariable("id") String id) {
 		Person person = personService.getPersonById(id);
+		
 		if(person == null) {
 			return new ResponseEntity<Person>(HttpStatus.NO_CONTENT);
 		}
@@ -69,14 +73,41 @@ public class PersonController {
 	public ResponseEntity<?> deletePersonById(@PathVariable("id") String id) {
 		boolean delete = personService.deletePerson(id);
 		JSONObject object = null;
+		
 		if(delete) {
 			object = new JSONObject();
 			object.put("Status", "true");
-			return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Object>(object, HttpStatus.OK);
 		} else {
 			object = new JSONObject();
 			object.put("Status", "false");
 			object.put("Error", "No content to delete");
+			return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@RequestMapping(value="/updatePerson/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<?> updatePerson(@PathVariable("id")String id, @RequestBody Person person) {
+		person.setId(id);
+		boolean update = personService.updatePerson(id, person);
+		JSONObject object = null;
+		
+		try {
+			if(update) {
+				object = new JSONObject();
+				object.put("Status", "true");
+				return new ResponseEntity<Object>(object, HttpStatus.OK);
+			} else {
+				object = new JSONObject();
+				object.put("Status", "false");
+				object.put("Error", "No Matching content to update");
+				return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
+			}
+			
+		} catch (Exception e) {
+			object = new JSONObject();
+			object.put("Status", "false");
+			object.put("Error", e.getMessage());
 			return new ResponseEntity<Object>(object, HttpStatus.BAD_REQUEST);
 		}
 	}

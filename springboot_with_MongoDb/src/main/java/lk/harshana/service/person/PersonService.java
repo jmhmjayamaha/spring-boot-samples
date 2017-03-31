@@ -10,7 +10,7 @@ public interface PersonService {
 	Person getPersonById(String id);
 	List<Person> getPersonByName(String name);
 	void savePerson(Person person);
-	void updatePerson(String id, Person person);
+	boolean updatePerson(String id, Person person);
 	boolean deletePerson(String id);
 	
 }

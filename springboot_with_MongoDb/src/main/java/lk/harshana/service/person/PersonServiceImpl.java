@@ -33,9 +33,14 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public void updatePerson(String id, Person person) {
-		// TODO Auto-generated method stub
-		
+	public boolean updatePerson(String id, Person person) {
+		Person p = getPersonById(id);
+		if(p == null) {
+			return false;
+		} else {
+			personDao.save(person);
+			return true;
+		}
 	}
 
 	@Override
