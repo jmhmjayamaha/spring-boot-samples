@@ -1,37 +1,13 @@
-package lk.harshana.model;
+package lk.harshana.dto;
 
-import java.io.Serializable;
+public class UserRequest {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name="USER_DETAILS")
-public class User implements Serializable {
-
-	private static final long serialVersionUID = 1l;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
 	private String firstName;
 	private String lastName;
 	private String address;
 	private int age;
 	private String email;
 	private String telNo;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
