@@ -11,7 +11,7 @@ public interface UserService {
 	List<User> getUserByFirstName(String fName);
 	List<User> getUserByLastName(String lName);
 	User getUser(int id);
-	boolean updateVersion(User user);
+	boolean updateUser(int id,User user);
 	boolean deletePerson(int id);
 	
 }
