@@ -1,0 +1,53 @@
+save user
+
+http://localhost:8080/api/user/save
+
+{
+	"firstName":"harshana",
+	"lastName":"madusanka",
+	"address" : "warakapola",
+	"age" : 12,
+	"email" : "harshana@gmail.com",
+	"telNo" : "0771234567"
+}
+
+///////////////////////////////////////////////////////////////////////////////
+get all the users
+
+http://localhost:8080/api/user/getAllUsers
+
+///////////////////////////////////////////////////////////////////////////////
+get the users by first name
+
+http://localhost:8080/api/user/getUserByFirstName/{name}
+
+///////////////////////////////////////////////////////////////////////////////
+get the users by last name
+
+http://localhost:8080/api/user/getUserByLastName/{name}
+
+///////////////////////////////////////////////////////////////////////////////
+get the user by id
+
+http://localhost:8080/api/user/getUserById/{id}
+
+///////////////////////////////////////////////////////////////////////////////
+delete the user
+
+http://localhost:8080/api/user/delete/{id}
+
+///////////////////////////////////////////////////////////////////////////////
+update the user
+
+http://localhost:8080/api/user/update/{id}
+
+{
+  "firstName": "kawshi",
+  "lastName": "madushani",
+  "address": "kandy",
+  "age": 23,
+  "email": "kaw@gmail.com",
+  "telNo": "01123465578"
+}
+
+///////////////////////////////////////////////////////////////////////////////
