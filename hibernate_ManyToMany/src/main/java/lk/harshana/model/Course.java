@@ -1,5 +1,6 @@
 package lk.harshana.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,23 +9,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Course")
-public class Course {
+@Table(name="course")
+public class Course implements Serializable {
 
+	private static final long serialVersionUID = 1l;
+	
 	@Id
 	private String courseCode;
 	private String courseName;
-
+	
 	@ManyToMany(mappedBy = "courses")
 	private Set<Student> students;
-
-	public Set<Student> getStudents() {
-		return students;
-	}
-
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
 
 	public String getCourseCode() {
 		return courseCode;
@@ -42,4 +37,13 @@ public class Course {
 		this.courseName = courseName;
 	}
 
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
+	
+	
 }

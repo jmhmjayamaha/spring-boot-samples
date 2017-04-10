@@ -1,5 +1,6 @@
 package lk.harshana.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,16 +15,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Student")
-public class Student {
+public class Student implements Serializable {
 
+	private static final long serialVersionUID = 1l;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name="Student_course", joinColumns = @JoinColumn(name="student_id"),
-	inverseJoinColumns = @JoinColumn(name = "course_code"))
+	@JoinTable(name="student_course", joinColumns = @JoinColumn(name="student_id"),
+	inverseJoinColumns = @JoinColumn(name="course_code"))
 	private Set<Course> courses;
 
 	public int getId() {
@@ -49,5 +52,6 @@ public class Student {
 	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
+	
 	
 }
