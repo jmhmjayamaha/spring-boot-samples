@@ -1,6 +1,7 @@
 package lk.harshana.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class Course implements Serializable {
 	private String courseName;
 	
 	@ManyToMany(mappedBy = "courses")
-	private Set<Student> students;
+	private Set<Student> students = new HashSet<Student>();
 
 	public String getCourseCode() {
 		return courseCode;

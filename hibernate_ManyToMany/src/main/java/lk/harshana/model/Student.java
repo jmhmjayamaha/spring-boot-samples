@@ -1,6 +1,7 @@
 package lk.harshana.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -27,7 +28,7 @@ public class Student implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="student_course", joinColumns = @JoinColumn(name="student_id"),
 	inverseJoinColumns = @JoinColumn(name="course_code"))
-	private Set<Course> courses;
+	private Set<Course> courses = new HashSet<Course>();
 
 	public int getId() {
 		return id;
