@@ -21,7 +21,7 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
@@ -29,11 +29,11 @@ public class User implements Serializable {
 	inverseJoinColumns = @JoinColumn(name="vehicle_id"))
 	private Set<Vehicle> vehicle = new HashSet<Vehicle>();
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
