@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import lk.harshana.model.User;
 
-public interface UserDao extends CrudRepository<User, Long>{
+public interface UserDao extends CrudRepository<User, Integer>{
 
 }

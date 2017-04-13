@@ -17,18 +17,18 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String name;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="student_id")
 	private Account account;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
