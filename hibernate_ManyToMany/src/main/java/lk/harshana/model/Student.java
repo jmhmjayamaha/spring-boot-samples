@@ -22,7 +22,7 @@ public class Student implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -30,11 +30,11 @@ public class Student implements Serializable {
 	inverseJoinColumns = @JoinColumn(name="course_code"))
 	private Set<Course> courses = new HashSet<Course>();
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
