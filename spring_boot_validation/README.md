@@ -1,14 +1,14 @@
 
 
-spring validation
+#spring validation
 
 Pre-requisites:
 
-maven 3.x
-java 1.8
+ - maven 3.x
+ - java 1.8
 
 
-Used Technologies/Frameworks:
+# Used Technologies/Frameworks:
 
-Spring boot
-MySql
+ - Spring boot
+ - MySql
