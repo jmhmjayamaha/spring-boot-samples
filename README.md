@@ -9,3 +9,4 @@ sample project example for the spring boot application.
  - spring boot mapping - many to many
  - spring boot mapping - one to many
  - spring boot mapping - one to one
+ - spring boot custom banner
