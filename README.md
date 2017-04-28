@@ -11,3 +11,4 @@ sample project example for the spring boot application.
  - spring boot mapping - one to one
  - spring boot custom banner
  - spring boot scheduled tasks
+ - spring boot test restdoc
