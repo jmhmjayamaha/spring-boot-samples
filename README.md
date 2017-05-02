@@ -12,3 +12,5 @@ sample project example for the spring boot application.
  - spring boot custom banner
  - spring boot scheduled tasks
  - spring boot test restdoc
+ - spring boot web security
+ - spring boot web
