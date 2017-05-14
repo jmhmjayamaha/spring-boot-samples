@@ -15,8 +15,15 @@ import java.util.concurrent.atomic.AtomicLong;
 @Controller
 public class GreetingController {
 
+    /** The counter. */
     private final AtomicLong counter = new AtomicLong();
 
+    /**
+     * Gets the greeting.
+     *
+     * @param name the name
+     * @return the greeting
+     */
     @RequestMapping(value="greeting", method = RequestMethod.GET)
     public @ResponseBody Greeting getGreeting(@RequestParam(value="name" , defaultValue = "harshana", required = false) String name) {
         return new Greeting((int) counter.incrementAndGet(),"hello" + name);
