@@ -14,3 +14,4 @@ sample project example for the spring boot application.
  - spring boot test restdoc
  - spring boot web security
  - spring boot web
+ - spring boot actuator
