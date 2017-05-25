@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
 </head>
-<body>
-<h1>welcome home</h1>
+<body ng-app="myApp">
+<h1>Greeting messages</h1>
+<div ng-controller="myController">
+	<ul ng-repeat = "greeting in greetings">
+		<li>{{greeting.id}}</li>
+		<li>{{greeting.message}}</li>
+	</ul>
+</div>
+
 </body>
 </html>
