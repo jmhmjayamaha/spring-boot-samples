@@ -15,3 +15,4 @@ sample project example for the spring boot application.
  - spring boot web security
  - spring boot web
  - spring boot actuator
+ - spring boot oauth 2
