@@ -1,5 +1,7 @@
 package lk.harshana.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,7 +13,10 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
+	@Autowired
+	private DataSource dataSource;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -28,10 +33,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.inMemory().withClient("my-trusted-client")
-        .authorizedGrantTypes("client_credentials", "password")
-        .authorities("ROLE_CLIENT","ROLE_TRUSTED_CLIENT").scopes("read","write","trust")
-        .resourceIds("oauth2-resource").accessTokenValiditySeconds(5000).secret("secret");
+		// clients.inMemory().withClient("my-trusted-client")
+		// .authorizedGrantTypes("client_credentials", "password")
+		// .authorities("ROLE_CLIENT","ROLE_TRUSTED_CLIENT").scopes("read","write","trust")
+		// .resourceIds("oauth2-resource").accessTokenValiditySeconds(5000).secret("secret");
+		clients.jdbc(dataSource).withClient("my-trusted-client").authorizedGrantTypes("client_credentials", "password")
+				.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write", "trust")
+				.resourceIds("oauth2-resource").accessTokenValiditySeconds(180).secret("secret");
 	}
-	
+
 }
