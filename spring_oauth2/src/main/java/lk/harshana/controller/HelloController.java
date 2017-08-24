@@ -10,4 +10,9 @@ public class HelloController {
 	public String index() {
 		return "hello world";
 	}
+	
+	@GetMapping(value="/private")
+	public String privete() {
+		return "private";
+	}
 }
